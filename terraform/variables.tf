@@ -5,3 +5,5 @@ variable "project_id" {
 variable "terraform_bucket" {
   type = string
 }
+
+variable "location" {}

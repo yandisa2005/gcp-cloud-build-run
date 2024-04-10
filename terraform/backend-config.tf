@@ -1,9 +1,10 @@
 terraform {
   backend "gcs" {
-    bucket = "terraform-tutorial-3247"
-    prefix = "state"
-
+    bucket = "inalabucket_d01"
+    prefix = "inala"
+    credentials = "inala-terra-key.json"
   }
+
   required_version = ">= 0.12.0"
   required_providers {
     google = {

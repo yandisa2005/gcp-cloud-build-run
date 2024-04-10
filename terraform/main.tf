@@ -1,31 +1,36 @@
 resource "google_container_registry" "registry" {
   project  = var.project_id
-  location = "EU"
+  location = var.location
 }
 
-resource "google_cloudbuild_trigger" "react-trigger" {
+resource "google_cloudbuild_trigger" "build-trigger" {
   github {
-    owner = "rzeAkbari"
-    name  = "gcp-cloud-build-run"
+    owner = "yandisa2005"
+    name  = "yandisa2005/gcp-cloud-build-run"
+    //Events section
     push {
       branch = "master"
       //or
       //tag    = "production"
     }
   }
-
-  substitutions = {
-    _FOO = "bar"
-    _BAZ = "qux"
-  }
-
-  filename      = "terraform/cloudbuild.yaml"
-  ignored_files = [".gitignore", "terraform/*"]
-  # build {
-  #   step {
-  #     name       = "node"
-  #     entrypoint = "npm"
-  #     args       = ["install"]
-  #   }
-  # }
+  ignored_files = [".gitignore"]
+  //Configuration section
+  // build config file
+  filename = "./cloudbuild.yaml"
+  // build config inline yaml
+  #build {
+  #    step {
+  #    name       = "node"
+  #    entrypoint = "npm"
+  #    args       = ["install"]
+  #    }
+  #    step{...}
+  #    ...
+  #  }
+  //Advanced section
+#  substitutions = {
+#    <key1> = "<value1>"
+#    <key2> = "<value2>"
+#  }
 }

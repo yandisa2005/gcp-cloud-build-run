@@ -1,2 +1,3 @@
-project_id       = "terraform-tutorial-324710"
-terraform_bucket = "terraform-tutorial-3247"
+project_id        = "inala-care-np"
+terraform_bucket  = "inalabucket_d01"
+location          = "northamerica-northeast1"
